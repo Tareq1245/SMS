@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WebApp2020.Models.YzuSchool>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SchoolName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SchoolName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.SchoolID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.SchoolID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.SchoolID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@using (Html.BeginForm("Success", "Admin", FormMethod.Get))
+{
+    <button class="btn btn-warning" type="submit">Go To Admin</button>
+}
