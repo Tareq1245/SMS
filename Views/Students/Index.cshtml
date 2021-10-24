@@ -1,0 +1,94 @@
+﻿@model IEnumerable<WebApp2020.Models.Student>
+@using WebApp2020.App_Code
+
+<div id="ajaxdiv">
+
+    @{
+
+
+        if (Model == null)
+        {
+            <div class="col-md-6">
+                <p class="nodata">NO Student data!!</p>
+            </div>
+        }
+        else
+        {
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sex)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateOfBirth)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Pwd)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.YzuMajor.MajorName)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Sex)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateOfBirth)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pwd)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.YzuMajor.MajorName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+            //the following AjaxHelper.PagingNavigator is defined in
+            //   WebApp2020.App_Code namespace/directory.
+            //  The 4th parameter "ajaxdiv" is the id value of
+            //     the div wrapping the @RenderBody()  in ~/Views/Shared/_Layout.cshtml.
+            //
+            <div class="row">
+                @Ajax.PagingNavigator((int)ViewData["pageIndex"], (int)ViewData["pageSize"], (int)ViewData["totalCount"], "ajaxdiv", "Index", null)
+            </div>
+
+        }
+    }
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryajax")
+}
+
+@using (Html.BeginForm("Success", "Admin", FormMethod.Get))
+{
+<button class="btn btn-warning" type="submit">Go To Admin</button>
+}

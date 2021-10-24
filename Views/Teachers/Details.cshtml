@@ -1,0 +1,83 @@
+﻿@model WebApp2020.Models.Teacher
+
+@{
+   // ViewBag.Title = "Details";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Teacher</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TeacharName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeacharName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            <img src="/Images/@Model.Photo" alt="N/A" style="width:90px;height:120px;" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REMARK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REMARK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YzuMajor.MajorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YzuMajor.MajorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sex1.Sex1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sex1.Sex1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title1.Title1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title1.Title1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TeacherID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

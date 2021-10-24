@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<address>
+    Yangjijin Campus<br />
+    Hanjiang District<br />
+    <abbr title="Phone">P:</abbr>
+    +8613101852759
+</address>
+
+<address>
+    <strong>Email:</strong>   <a href="mailto:Support@example.com">tareqhossain1245@outlook.com</a><br />
+    @*<strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>*@
+</address>
+
+@using (Html.BeginForm("Admin", "Admin", FormMethod.Get))
+{
+    <button class="btn btn-warning" type="submit">Go to Home</button>
+}

@@ -1,0 +1,44 @@
+﻿@model IList<WebApp2020.ViewModels.CourseGrade>
+@using WebApp2020.ViewModels;
+
+<p>
+    <h2>Enter Grade</h2>
+</p>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+    <table class="table">
+        <tr>
+            <th>StudentID</th>
+            <th>StudentName</th>
+            <th>Score</th>
+        </tr>
+        @{
+            @Html.Hidden("recordNum", Model.Count())
+
+            @*@foreach (var item in Model)*@
+            for (int i = 0; i < Model.Count(); i++)
+            {
+                <tr>
+                    @Html.Hidden(string.Format("sno{0}", i), Model[i].StudentID.ToString())
+                    <td>@Model[i].StudentID.ToString() </td>
+                    <td>@Model[i].StudentName.ToString()</td>
+                    <td>
+                        <input id=@string.Format("score{0}", i) name=@string.Format("score{0}", i) value=@Model[i].Score.ToString() />
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+    <div class="form-group">
+        <div class="col-md-offset-4 col-md-8">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Go to Home", "Index")
+</div>
+

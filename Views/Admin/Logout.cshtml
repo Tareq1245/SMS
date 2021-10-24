@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Log Out";
+}
+
+@using (Html.BeginForm("Login", "Admin", FormMethod.Get))
+{
+    <button class="btn btn-warning" type="submit">Click to Login</button>
+}
+
+@using (Html.BeginForm("Index", "Admin", FormMethod.Get))
+{
+    <button class="btn btn-warning" type="submit">Go To Home</button>
+}

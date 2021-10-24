@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Welcome page for Successfully logined User.";
+    ViewBag.UserName = Session["UserName"];
+}
+
+<h2>Welcome, @ViewBag.UserName!</h2>
+
+@*<script>
+      $.ajax({
+        url: '@Url.Action("Logout", "Admin")'
+      })
+    </script>*@
+@using (Html.BeginForm("Logout", "Admin", FormMethod.Get))
+{
+    <button class="btn btn-warning" type="submit">Click to Logout</button>
+}
+
+@using (Html.BeginForm("Index", "Students", FormMethod.Get))
+{
+    <button class="btn btn-warning" type="submit">Maintain Students</button>
+}
+
+@using (Html.BeginForm("Index", "Teachers", FormMethod.Get))
+{
+    <button class="btn btn-warning" type="submit">Maintain Teacher</button>
+}
+
+@using (Html.BeginForm("Index", "YzuMajors", FormMethod.Get))
+{
+    <button class="btn btn-warning" type="submit">Maintain Majors</button>
+}
+
+@using (Html.BeginForm("Index", "YzuSchools", FormMethod.Get))
+{
+    <button class="btn btn-warning" type="submit">Maintain Schools</button>
+}
+
+@using (Html.BeginForm("Index", "Courses", FormMethod.Get))
+{
+    <button class="btn btn-warning" type="submit">Maintain Courses</button>
+}
+
+@using (Html.BeginForm("Index", "Grades", FormMethod.Get))
+{
+    <button class="btn btn-warning" type="submit">Maintain Grades</button>
+}
+
+@using (Html.BeginForm("Index", "Titles", FormMethod.Get))
+{
+    <button class="btn btn-warning" type="submit">Teachers Title</button>
+}
+
+@using (Html.BeginForm("Index", "Sexes", FormMethod.Get))
+{
+    <button class="btn btn-warning" type="submit">Edit Sex</button>
+}

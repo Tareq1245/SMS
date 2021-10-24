@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StudentDB2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdminUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="CourseID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="CourseName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Period" Type="smallint" Nullable="false" />
+    <Property Name="Credit" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Grade">
+    <Key>
+      <PropertyRef Name="StudentID" />
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="StudentID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="CourseID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Score" Type="smallint" />
+    <Property Name="DateOfExam" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="Sex">
+    <Key>
+      <PropertyRef Name="Sex" />
+    </Key>
+    <Property Name="Sex" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="StudentName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="DateOfBirth" Type="smalldatetime" Nullable="false" />
+    <Property Name="MajorID" Type="int" />
+    <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Pwd" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="100" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="TeacherID" />
+    </Key>
+    <Property Name="TeacherID" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="TeacharName" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="10" />
+    <Property Name="MajorID" Type="int" />
+    <Property Name="Title" Type="nvarchar" MaxLength="20" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="REMARK" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Title">
+    <Key>
+      <PropertyRef Name="Title" />
+    </Key>
+    <Property Name="Title" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="YzuMajor">
+    <Key>
+      <PropertyRef Name="MajorID" />
+    </Key>
+    <Property Name="MajorID" Type="int" Nullable="false" />
+    <Property Name="MajorName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="SchoolID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="YzuSchool">
+    <Key>
+      <PropertyRef Name="SchoolID" />
+    </Key>
+    <Property Name="SchoolID" Type="int" Nullable="false" />
+    <Property Name="SchoolName" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Grade__CourseID__37A5467C">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="Grade">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Grade__StudentID__36B12243">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="Grade">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Student__MajorID__2B3F6F97">
+    <End Role="YzuMajor" Type="Self.YzuMajor" Multiplicity="0..1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="YzuMajor">
+        <PropertyRef Name="MajorID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="MajorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Student__Sex__01142BA1">
+    <End Role="Sex" Type="Self.Sex" Multiplicity="0..1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sex">
+        <PropertyRef Name="Sex" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="Sex" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Teacher__MajorID__797309D9">
+    <End Role="YzuMajor" Type="Self.YzuMajor" Multiplicity="0..1" />
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="YzuMajor">
+        <PropertyRef Name="MajorID" />
+      </Principal>
+      <Dependent Role="Teacher">
+        <PropertyRef Name="MajorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Teacher__Sex__787EE5A0">
+    <End Role="Sex" Type="Self.Sex" Multiplicity="0..1" />
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sex">
+        <PropertyRef Name="Sex" />
+      </Principal>
+      <Dependent Role="Teacher">
+        <PropertyRef Name="Sex" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Teacher__Title__7A672E12">
+    <End Role="Title" Type="Self.Title" Multiplicity="0..1" />
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Title">
+        <PropertyRef Name="Title" />
+      </Principal>
+      <Dependent Role="Teacher">
+        <PropertyRef Name="Title" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__YzuMajor__School__276EDEB3">
+    <End Role="YzuSchool" Type="Self.YzuSchool" Multiplicity="1" />
+    <End Role="YzuMajor" Type="Self.YzuMajor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="YzuSchool">
+        <PropertyRef Name="SchoolID" />
+      </Principal>
+      <Dependent Role="YzuMajor">
+        <PropertyRef Name="SchoolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StudentDB2ModelStoreContainer">
+    <EntitySet Name="AdminUser" EntityType="Self.AdminUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Grade" EntityType="Self.Grade" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sex" EntityType="Self.Sex" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Title" EntityType="Self.Title" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="YzuMajor" EntityType="Self.YzuMajor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="YzuSchool" EntityType="Self.YzuSchool" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Grade__CourseID__37A5467C" Association="Self.FK__Grade__CourseID__37A5467C">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Grade" EntitySet="Grade" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Grade__StudentID__36B12243" Association="Self.FK__Grade__StudentID__36B12243">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Grade" EntitySet="Grade" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Student__MajorID__2B3F6F97" Association="Self.FK__Student__MajorID__2B3F6F97">
+      <End Role="YzuMajor" EntitySet="YzuMajor" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Student__Sex__01142BA1" Association="Self.FK__Student__Sex__01142BA1">
+      <End Role="Sex" EntitySet="Sex" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Teacher__MajorID__797309D9" Association="Self.FK__Teacher__MajorID__797309D9">
+      <End Role="YzuMajor" EntitySet="YzuMajor" />
+      <End Role="Teacher" EntitySet="Teacher" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Teacher__Sex__787EE5A0" Association="Self.FK__Teacher__Sex__787EE5A0">
+      <End Role="Sex" EntitySet="Sex" />
+      <End Role="Teacher" EntitySet="Teacher" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Teacher__Title__7A672E12" Association="Self.FK__Teacher__Title__7A672E12">
+      <End Role="Title" EntitySet="Title" />
+      <End Role="Teacher" EntitySet="Teacher" />
+    </AssociationSet>
+    <AssociationSet Name="FK__YzuMajor__School__276EDEB3" Association="Self.FK__YzuMajor__School__276EDEB3">
+      <End Role="YzuSchool" EntitySet="YzuSchool" />
+      <End Role="YzuMajor" EntitySet="YzuMajor" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

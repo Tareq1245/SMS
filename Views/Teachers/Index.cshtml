@@ -1,0 +1,82 @@
+﻿@model IEnumerable<WebApp2020.Models.Teacher>
+
+@{
+    //ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TeacharName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REMARK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YzuMajor.MajorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sex1.Sex1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title1.Title1)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeacharName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Photo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.REMARK)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YzuMajor.MajorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sex1.Sex1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title1.Title1)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TeacherID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.TeacherID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TeacherID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@using (Html.BeginForm("Success", "Admin", FormMethod.Get))
+{
+    <button class="btn btn-warning" type="submit">Go to Admin</button>
+}

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<WebApp2020.Models.Student>
+@using WebApp2020.App_Code
+
+<div id="ajaxdiv">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pwd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YzuMajor.MajorName)
+            </th>
+            @*<th></th>*@
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sex)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pwd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Photo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YzuMajor.MajorName)
+                </td>
+                @*<td>
+                      @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
+                      @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
+                      @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })
+                    </td>*@
+            </tr>
+        }
+    </table>
+
+    @Ajax.PagingNavigator((int)ViewData["PageIndex"], (int)ViewData["PageSize"], (int)ViewData["TotalCount"], "ajaxdiv", "AjaxIndex", null)
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryajax")
+}

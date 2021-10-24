@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9e1ff6722c2848c79b650d1970ecb9ec" Name="Diagram1">
+        <EntityTypeShape EntityType="StudentDB2Model.AdminUser" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentDB2Model.Course" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentDB2Model.Grade" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentDB2Model.Student" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentDB2Model.YzuMajor" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentDB2Model.YzuSchool" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="StudentDB2Model.FK__Grade__CourseID__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentDB2Model.FK__Grade__StudentID__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentDB2Model.FK__Student__MajorID__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentDB2Model.FK__YzuMajor__School__276EDEB3" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="StudentDB2Model.Teacher" Width="1.5" PointX="5.25" PointY="9" />
+        <AssociationConnector Association="StudentDB2Model.FK__Teacher__MajorID__4AB81AF0" />
+        <EntityTypeShape EntityType="StudentDB2Model.Sex" Width="1.5" PointX="3.375" PointY="10" />
+        <EntityTypeShape EntityType="StudentDB2Model.Title" Width="1.5" PointX="0.75" PointY="7.875" />
+        <AssociationConnector Association="StudentDB2Model.FK__Teacher__Sex__787EE5A0" />
+        <AssociationConnector Association="StudentDB2Model.FK__Teacher__Title__7A672E12" />
+        <AssociationConnector Association="StudentDB2Model.FK__Student__Sex__01142BA1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
